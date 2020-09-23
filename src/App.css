@@ -1,18 +1,26 @@
 .App {
   /* text-align: center; */
+   
 }
  
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh; */
+   
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: center; */
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   color: white;
+  padding: 5px; 
+  min-height: 100vh;
 }
 
+ .header-text {
+  text-decoration: none;
+  color: white;
+  font-size: 44px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -21,3 +29,65 @@
   border: 4px solid white;
   padding: 10px;
 }
+
+.card {
+  background-color: 
+  #e8e7ea;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px black;
+}
+.card h2, h3, p, a, li {
+  color: #282c34;
+  /* color: #495da8; */
+}
+h1 {
+  font-size: 44px;
+  line-height: 68px;
+}
+h2, a {
+  font-size: 33px;
+  line-height: 49px;
+  text-decoration: none;
+}
+h3 {
+  font-size: 22px;
+  line-height: 33px;
+}
+p {
+  font-size: 18px;
+  line-height: 27px;
+}
+button {
+  font-size: 18px;
+  padding: 9px;
+  border-radius: 5px;
+  background-color: #495da8;
+  color: white;
+  box-shadow: 3px 3px #282c34;
+    /* 
+  large button, 44px in height, border-radius 5
+  medium button, 54px in height, border-radius 10
+  extra large, 64px in height, border-radius 15
+   */
+}
+button:hover {
+  background-color:#3a4984;
+}
+a {
+  color: white;
+  /* color: #6779bd; */
+}
+a:hover {
+
+  color:#3a4984;
+}
+
+/* colors: 
+CTA color and a neutral color;
+also a slightly lighter and darker variation of the above (10%)
+darker: #3a4984
+lighter: #6779bd
+black: #282c34
+
+*/

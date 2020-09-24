@@ -1,6 +1,7 @@
 //a chart that shows daily records of "no"
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SayingNoSheet = ({ nos }) => {
     return (
@@ -15,6 +16,7 @@ const SayingNoSheet = ({ nos }) => {
                     </li>
                 ))}
             </ul>
+            <Link to="/asking-for-help-sheet" className="card-link">Next</Link>
             </div>
         </>
     );

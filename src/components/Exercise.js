@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class Exercise extends React.Component {
 constructor (props) {
@@ -38,6 +39,7 @@ render () {
                              <button type="submit"
                     onClick={this.props.addExercise}
             >Submit</button>
+            <Link to="/rest" className="card-link">Next</Link>
             </form> 
         </>
 

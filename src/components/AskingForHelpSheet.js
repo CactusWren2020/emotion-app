@@ -1,6 +1,7 @@
 //a chart that shows daily records of asking for help
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const AskingForHelpSheet = ({ asks }) => {
     return (
@@ -15,6 +16,7 @@ const AskingForHelpSheet = ({ asks }) => {
                             </li>
                         ))}
                     </ul>
+                <Link to="/prioritizing-enjoyment-sheet" className="card-link">Next</Link>
             </div>
         </>
     );

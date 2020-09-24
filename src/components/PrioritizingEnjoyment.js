@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const PrioritizingEnjoyment = ({ updateDate, updateEnjoys, addEnjoys }) => {
     return (
@@ -21,6 +22,7 @@ const PrioritizingEnjoyment = ({ updateDate, updateEnjoys, addEnjoys }) => {
             <button type="submit"
                     onClick={addEnjoys}
             >Submit</button>
+            <Link to="/eating" className="card-link">Next</Link>
             </form> 
         </>
 

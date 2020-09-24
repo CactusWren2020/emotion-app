@@ -1,6 +1,7 @@
 //a chart that shows daily records of overriding an unhealthy eating habit
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const EatingSheet = ({ eats }) => {
     return (
@@ -15,6 +16,7 @@ const EatingSheet = ({ eats }) => {
                     </li>
                 ))}
             </ul>
+            <Link to="/exercise-sheet" className="card-link">Next</Link>
             </div>
         </>
     );

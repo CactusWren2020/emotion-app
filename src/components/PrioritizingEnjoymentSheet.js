@@ -1,6 +1,7 @@
 //a chart that shows daily records of prioritizing enjoyment
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const PrioritizingEnjoymentSheet = ({ enjoys }) => {
     return (
@@ -15,6 +16,7 @@ const PrioritizingEnjoymentSheet = ({ enjoys }) => {
                             </li>
                         ))}
                     </ul>
+                <Link to="/eating-sheet" className="card-link">Next</Link>
             </div>
         </>
     );

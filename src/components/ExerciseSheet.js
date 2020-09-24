@@ -1,6 +1,7 @@
 //a chart that shows daily records of exercise
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const ExerciseSheet = ({ exercise }) => {
     return (
@@ -15,6 +16,7 @@ const ExerciseSheet = ({ exercise }) => {
                             </li>
                         ))}
                     </ul>
+                <Link to="/rest-sheet" className="card-link">Next</Link>
             </div>
         </>
     );

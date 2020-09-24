@@ -1,4 +1,15 @@
 import React from 'react';
+
+import './App.css';
+import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
+import Forms from './components/Forms';
+import Sheets from './components/Sheets';
+import Nav from './components/Nav';
+
+import HowToUse from './components/HowToUse';
+import About from './components/About';
+
 import Feelings from "./components/Feelings";
 import FeelingsSheet from "./components/FeelingsSheet"; 
 import LikesAndDislikes from "./components/LikesAndDislikes";
@@ -20,8 +31,6 @@ import SelfDisciplineSheet from "./components/SelfDisciplineSheet";
 import SelfSoothing from "./components/SelfSoothing";
 import SelfSoothingSheet from "./components/SelfSoothingSheet"
 
-import './App.css';
-import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = { 
@@ -190,11 +199,37 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <header className="App-header">
+            
             <Link to="/" className="header-text"><h1 >Emotion App</h1></Link>
+            <Nav />
+             <Switch>
+            <Route 
+              exact path="/forms"
+              render={() => <Forms />}/>
+            </Switch>
+
+            <Switch>
+            <Route 
+              exact path="/sheets"
+              render={() => <Sheets />}/>
+            </Switch>
+
+            <Switch>
+              <Route
+                exact path="/how-to-use"
+                  render={() => <HowToUse />}/>
+
+            <Switch>
+              <Route  
+                exact path="/about"
+                render={() => <About />}/>
+            </Switch>
+
+            </Switch>
             {/* Feelings */}
             <Switch>
             <Route 
-              exact path="/record-feelings"
+              exact path="/feelings"
               render={() => <Feelings
                 updateDate={this.updateDate}
                 updateTime={this.updateTime}
@@ -203,14 +238,14 @@ class App extends React.Component {
               />} 
             /> 
           </Switch>
-          <Link to="/record-feelings">Record Feelings</Link>
+          
           <Switch>
             <Route
               exact path="/feelings-sheet"
               render={() => <FeelingsSheet records={this.state.records}/>}
             />
           </Switch>
-          <Link to="/feelings-sheet">Feelings Sheet</Link>
+        
           {/* Likes and Dislikes */}
           <Switch>
             <Route
@@ -223,7 +258,7 @@ class App extends React.Component {
               />} 
             />    
           </Switch>
-          <Link to="/likes-and-dislikes">Likes and Dislikes</Link>
+          
           <Switch>
             <Route
               exact path="/likes-and-dislikes-sheet"
@@ -232,7 +267,7 @@ class App extends React.Component {
                       }
               />
             </Switch>
-            <Link to="/likes-and-dislikes-sheet">Likes and Dislikes Sheet</Link>
+            
            {/* Saying No */}
             <Switch>
               <Route
@@ -244,8 +279,7 @@ class App extends React.Component {
                                 addNos={this.addNos} />}
                 />
             </Switch>          
-            <Link to="/saying-no">Saying No</Link>
-            <Link to="/saying-no-sheet">Saying No Sheet</Link>
+            
             <Switch>
               <Route
                 exact path="/saying-no-sheet"
@@ -264,7 +298,7 @@ class App extends React.Component {
                                 />}
             />
             </Switch>
-            <Link to="/asking-for-help">Asking for Help</Link>
+            
             <Switch>
               <Route
                 exact path="/asking-for-help-sheet"
@@ -273,7 +307,7 @@ class App extends React.Component {
               />
                                
             </Switch>
-            <Link to="/asking-for-help-sheet">Asking for Help Sheet</Link>
+        
             {/* Prioritizing Enjoyment */}
             <Switch>
                 <Route 
@@ -285,7 +319,7 @@ class App extends React.Component {
                                 />}
                  />
             </Switch>
-            <Link to="/prioritizing-enjoyment">Prioritizing Enjoyment</Link>
+          
             <Switch>
               <Route
                     exact path="/prioritizing-enjoyment-sheet"
@@ -293,7 +327,7 @@ class App extends React.Component {
                                     enjoys={this.state.enjoys}/>}
               />
               </Switch>      
-              <Link to="/prioritizing-enjoyment-sheet">Prioritizing Enjoyment Sheet</Link>
+              
               {/* Eating Healthy */}
               <Switch>
                 <Route
@@ -305,7 +339,7 @@ class App extends React.Component {
                                 />}
                 />
               </Switch>
-              <Link to="/eating">Eating Healthy</Link>
+              
               <Switch>
                 <Route
                   exact path="/eating-sheet"
@@ -313,7 +347,7 @@ class App extends React.Component {
                                   eats={this.state.eats}/>}
                   />
               </Switch>
-              <Link to="/eating-sheet">Eating Healthy Sheet</Link> 
+              
               {/* Exercise */}
               <Switch>
                 <Route
@@ -325,7 +359,7 @@ class App extends React.Component {
                   />}
                 />
                 </Switch>
-                <Link to="/exercise">Exercise</Link>
+              
                 <Switch>
                   <Route
                     exact path="/exercise-sheet"
@@ -333,7 +367,7 @@ class App extends React.Component {
                                     exercise={this.state.exercise} />}
                     />
                 </Switch>
-                <Link to="/exercise-sheet">Exercise Sheet</Link>
+         
                 <Switch>
                   <Route
                     exact path="/rest"
@@ -343,7 +377,7 @@ class App extends React.Component {
                                     addRest={this.addRest}/>}
                   />
                 </Switch>
-                <Link to="/rest">Rest and Relaxation</Link>
+                
                 <Switch>
                   <Route  
                       exact path="/rest-sheet"
@@ -351,7 +385,7 @@ class App extends React.Component {
                                       rest={this.state.rest}/>}
                   />
                 </Switch>
-                <Link to="/rest-sheet">Rest and Relaxation Sheet</Link>
+               
                 <Switch>
                   <Route  
                       exact path="/self-discipline"
@@ -362,7 +396,7 @@ class App extends React.Component {
                                       addDiscipline={this.addDiscipline}/>}
                   />
                 </Switch>
-                <Link to="/self-discipline">Self Discipline</Link>
+               
                 <Switch>
                   <Route
                     exact path="/self-discipline-sheet"
@@ -370,7 +404,7 @@ class App extends React.Component {
                                     disciplines={this.state.disciplines}/>}
                   />
                 </Switch>
-                <Link to="/self-discipline-sheet">Self Discipline Sheet</Link>
+               
                 <Switch>
                     <Route
                       exact path="/self-soothing"
@@ -380,7 +414,7 @@ class App extends React.Component {
                                       addSoothe={this.addSoothe}/>}
                     />
                 </Switch>
-                <Link to="self-soothing">Self Soothing</Link>
+                
                 <Switch>
                     <Route  
                         exact path="/self-soothing-sheet"
@@ -388,8 +422,7 @@ class App extends React.Component {
                                         soothes={this.state.soothes}/>}
                     />
                 </Switch>
-                <Link to="/self-soothing-sheet">Self Soothing Sheet</Link>
-      </header>
+                </header>
       
       </div>
      

@@ -35,9 +35,9 @@ class RecordFeelings extends React.Component {
                     </p>
                     <button type="submit"
                             onClick={this.props.addRecord}>Submit</button>
-                
+                    <Link to="/likes-and-dislikes" className="card-link">Next</Link>                
                             </form>
-                    <Link to="/feelings-sheet">Feelings Sheet</Link>               
+                   
             </>
             );
     }

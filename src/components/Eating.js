@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Eating = ({ updateDate, updateEats, addEats }) => {
     return (
@@ -21,6 +22,7 @@ const Eating = ({ updateDate, updateEats, addEats }) => {
             <button type="submit"
                     onClick={addEats}
             >Submit</button>
+            <Link to="/exercise" className="card-link">Next</Link>
             </form> 
         </>
 

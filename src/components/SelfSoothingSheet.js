@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SelfSoothingSheet = ({ soothes }) => {
     return (
@@ -10,6 +11,7 @@ const SelfSoothingSheet = ({ soothes }) => {
                             return <li key={`soothe ${item.date}`}>{item.date}, {item.soothe} </li>
                         })}    
                     </ul>
+                <Link to="/feelings-sheet" className="card-link">See your sheets</Link>
             </div>
         </>
     )

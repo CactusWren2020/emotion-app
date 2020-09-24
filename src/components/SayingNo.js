@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SayingNo = ({ updateDate, updateNos, addNos }) => {
     return (
@@ -21,6 +22,7 @@ const SayingNo = ({ updateDate, updateNos, addNos }) => {
             <button type="submit"
                     onClick={addNos}
             >Submit</button>
+            <Link to="/asking-for-help" className="card-link">Next</Link>
             </form> 
         </>
 

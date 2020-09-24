@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SelfSoothing = ({ updateDate, updateSoothe, addSoothe }) => {
     return (
@@ -19,6 +20,7 @@ const SelfSoothing = ({ updateDate, updateSoothe, addSoothe }) => {
                 </p>
                 <button type="submit"
                         onClick={addSoothe}>Submit</button>
+                <Link to="/forms" className="card-link">Next</Link>
             </form>
         </>
     )

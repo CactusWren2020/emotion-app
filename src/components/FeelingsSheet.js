@@ -1,6 +1,7 @@
 //a chart that shows the daily records
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const FeelingsSheet = ({ records }) => {
     return (
@@ -14,6 +15,7 @@ const FeelingsSheet = ({ records }) => {
                             </li>
                         ))}
                     </ul>
+                <Link to="/likes-and-dislikes-sheet" className="card-link">Next</Link>
             </div>
         </>
     )

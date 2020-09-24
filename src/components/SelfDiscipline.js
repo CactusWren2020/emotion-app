@@ -1,7 +1,7 @@
 //a form to get records of self-discipline
 
 import React from "react";
- 
+import { Link } from 'react-router-dom'; 
 
 class SelfDiscipline extends React.Component {
     render() {
@@ -35,7 +35,7 @@ class SelfDiscipline extends React.Component {
                     </p>
                     <button type="submit"
                             onClick={this.props.addDiscipline}>Submit</button>
-                
+                    <Link to="/self-soothing" className="card-link">Next</Link>
                             </form>
                    
             </>

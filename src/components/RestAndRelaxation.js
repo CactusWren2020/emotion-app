@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class RestAndRelaxation extends React.Component {
     constructor (props) {
@@ -38,6 +39,7 @@ class RestAndRelaxation extends React.Component {
                                  <button type="submit"
                         onClick={this.props.addRest}
                 >Submit</button>
+                <Link to="/self-discipline" className="card-link">Next</Link>
                 </form> 
             </>
         )

@@ -1,6 +1,7 @@
 //a chart that shows daily records of rest/relaxation
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const RestAndRelaxationSheet = ({ rest }) => {
     return (
@@ -15,6 +16,7 @@ const RestAndRelaxationSheet = ({ rest }) => {
                     </li>
                 ))}
             </ul>
+            <Link to="/self-discipline-sheet" className="card-Link">Next</Link>
             </div>
         </>
     );

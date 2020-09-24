@@ -1,6 +1,7 @@
 //a chart that shows the daily records
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SelfDisciplineSheet = ({ disciplines }) => {
     return (
@@ -14,6 +15,7 @@ const SelfDisciplineSheet = ({ disciplines }) => {
                             </li>
                         ))}
                     </ul>
+                <Link to="/self-soothing-sheet" className="card-link">Next</Link>
             </div>
         </>
     )

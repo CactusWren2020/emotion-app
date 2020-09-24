@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const LikesAndDislikes = ({ updateDate, updateLikeOrDislike, updateText, addLikeOrDislike }) => {
     return (
@@ -27,6 +28,7 @@ const LikesAndDislikes = ({ updateDate, updateLikeOrDislike, updateText, addLike
                 </p>
                 <button type="submit"
                         onClick={addLikeOrDislike}>Submit</button>
+                <Link to="/saying-no" className="card-link">Next</Link>
             </form>
         </>
     )

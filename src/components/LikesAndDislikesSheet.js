@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const LikesAndDislikes = ({ likesAndDislikes }) => {
     return (
@@ -10,6 +11,7 @@ const LikesAndDislikes = ({ likesAndDislikes }) => {
                             return <li key={item.index}>{item.date}, {item.likeOrDislike}, {item.text}</li>
                         })}    
                     </ul>
+            <Link to="/saying-no-sheet" className="card-link">Next</Link>
             </div>
         </>
     )

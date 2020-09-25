@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const SelfSoothing = ({ updateDate, updateSoothe, addSoothe }) => {
+const SelfSoothing = ({ updateDate, updateSoothe, addSoothe, redirect }) => {
+    if (redirect) {
+        return <Redirect to={redirect}/>
+    }
     return (
         <>
             <form className="card">

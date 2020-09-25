@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
     return (
         <div className="about">
-            <div className="container">
+            
                 <div className="card">
                     <h2>About Emotion App</h2>
                     <p>
@@ -20,7 +20,7 @@ const About = () => {
                     <Link to="/how-to-use" className="card-link">Next</Link>
 
                 </div>
-            </div>
+          
         </div>
     );
 }

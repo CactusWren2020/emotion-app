@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {BrowserRouter as Router, withRouter, Route, Switch, Link } from "react-router-dom";
 
 import Forms from './components/Forms';
 import Sheets from './components/Sheets';
@@ -42,34 +42,44 @@ class App extends React.Component {
 
       currentRecord: "",
       records: [],
+      feelingsRedirect: null,
 
       currentLikeOrDislike: "",
       currentText: "",
       likesAndDislikes: [],
+      likesAndDislikesRedirect: null,
 
       currentNos: "",
       nos: [],
+      noRedirect: null,
 
       currentAsks: "",
       asks: [],
+      askRedirect: null,
 
       currentEnjoys: "",
       enjoys: [],
+      enjoyRedirect: null,
 
       currentEats: "",
       eats: [],
+      eatsRedirect: null,
 
       currentExercise: "",
       exercise: [],
+      exerciseRedirect: null,
 
       currentRests: "",
       rest: [],
+      restRedirect: null,
 
       currentDiscipline: "",
       disciplines: [],
+      disciplineRedirect: null,
 
       currentSoothe: "",
-      soothes: []
+      soothes: [],
+      sootheRedirect: null,
   }
   /* Utility Functions */
   updateDate = (date) => {
@@ -87,7 +97,7 @@ class App extends React.Component {
     e.preventDefault();
     const newRest = {date: this.state.currentDate, rest: this.state.currentRests};
     const newRests = this.state.rest.concat(newRest);
-    this.setState({ rest: newRests });
+    this.setState({ rest: newRests, restRedirect: "/self-discipline" });
   }
   /* Exercise */
   updateExercise = (val) => {
@@ -98,7 +108,7 @@ class App extends React.Component {
     const newExercise = {date: this.state.currentDate,
                         exercise: this.state.currentExercise};
     const newExercises = this.state.exercise.concat(newExercise);
-    this.setState({ exercise: newExercises })
+    this.setState({ exercise: newExercises, exerciseRedirect: "/rest" })
   }
   /* Eating Healthy */
   updateEats = (num) => {
@@ -109,7 +119,7 @@ class App extends React.Component {
     const newEat = {date: this.state.currentDate,
                     numEats: this.state.currentEats};
     const newEats = this.state.eats.concat(newEat);
-    this.setState({ eats: newEats });
+    this.setState({ eats: newEats, eatsRedirect: "/exercise" });
   }
   /* Prioritizing Enjoyment */
   updateEnjoys = (num) => {
@@ -120,7 +130,7 @@ class App extends React.Component {
     const newEnjoy = {date: this.state.currentDate,
                       numEnjoys: this.state.currentEnjoys};
     const newEnjoys = this.state.enjoys.concat(newEnjoy);
-    this.setState({ enjoys: newEnjoys });
+    this.setState({ enjoys: newEnjoys, enjoyRedirect: "/eating" });
   }
   /* Asking for Help Functions */
   updateAsks = (num) => {
@@ -131,7 +141,7 @@ class App extends React.Component {
     const newAsk = {date: this.state.currentDate,
                     numAsks: this.state.currentAsks};
     const newAsks = this.state.asks.concat(newAsk);
-    this.setState({ asks: newAsks });
+    this.setState({ asks: newAsks, askRedirect: "/prioritizing-enjoyment" });
   }
   /* Saying No Functions */ 
     updateNos = (num) => {
@@ -142,7 +152,7 @@ class App extends React.Component {
       const newNo = {date: this.state.currentDate,
                       numNos: this.state.currentNos};
       const newNos = this.state.nos.concat(newNo);
-      this.setState({ nos: newNos });
+      this.setState({ nos: newNos, noRedirect: "/asking-for-help" });
     }
   /* Self Discipline */
   updateDiscipline = (discipline) => {
@@ -152,7 +162,7 @@ class App extends React.Component {
     e.preventDefault();
     const newDiscipline = {date: this.state.currentDate, time: this.state.currentTime, discipline: this.state.currentDiscipline};
     const newDisciplines = this.state.records.concat(newDiscipline);
-    this.setState({ disciplines: newDisciplines });
+    this.setState({ disciplines: newDisciplines, disciplineRedirect: "/self-soothing" });
   }
   /* Record Feelings Functions */  
     
@@ -165,8 +175,10 @@ class App extends React.Component {
                               time: this.state.currentTime,
                               record: this.state.currentRecord};
           const newRecords = this.state.records.concat(newRecord);
-          this.setState({ records: newRecords });
+          this.setState({ records: newRecords, feelingsRedirect: "/likes-and-dislikes" });
+          
           this.setState({currentDate: "", currentTime: "", currentRecord: ""});
+          
       }       
   /* Like or Dislike Functions */
     updateLikeOrDislike = (option) => {
@@ -183,8 +195,9 @@ class App extends React.Component {
                                 text: this.state.currentText
       }
       const newLikeOrDislikes = this.state.likesAndDislikes.concat(newLikeOrDislike);
-      this.setState({ likesAndDislikes: newLikeOrDislikes });
-      this.setState({currentDate: "", currentLikeOrDislike: "", currentText: ""})
+      this.setState({ likesAndDislikes: newLikeOrDislikes, likesAndDislikesRedirect: "/saying-no" });
+      this.setState({currentDate: "", currentLikeOrDislike: "", currentText: ""});
+
     }
   /* Self-Soothing Functions */
   updateSoothe = (text) => {
@@ -194,7 +207,7 @@ class App extends React.Component {
     e.preventDefault();
     const newSoothe = {date: this.state.currentDate, soothe: this.state.currentSoothe};
     const newSoothes = this.state.soothes.concat(newSoothe);
-    this.setState({ soothes: newSoothes });
+    this.setState({ soothes: newSoothes, sootheRedirect: "/forms" });
   }
    
   render() {
@@ -240,11 +253,12 @@ class App extends React.Component {
             <Switch>
             <Route 
               exact path="/feelings"
-              render={() => <Feelings
+              render={(props) => <Feelings 
                 updateDate={this.updateDate}
                 updateTime={this.updateTime}
                 updateRecord={this.updateRecord}
                 addRecord={this.addRecord}
+                redirect={this.state.feelingsRedirect}
               />} 
             /> 
           </Switch>
@@ -264,7 +278,8 @@ class App extends React.Component {
                 updateDate={this.updateDate}
                 updateLikeOrDislike={this.updateLikeOrDislike}
                 updateText={this.updateText}   
-                addLikeOrDislike={this.addLikeOrDislike}             
+                addLikeOrDislike={this.addLikeOrDislike}
+                redirect={this.state.likesAndDislikesRedirect}             
               />} 
             />    
           </Switch>
@@ -285,8 +300,8 @@ class App extends React.Component {
                 render={() => <SayingNo 
                                 updateDate={this.updateDate}
                                 updateNos={this.updateNos}
-                                 
-                                addNos={this.addNos} />}
+                                addNos={this.addNos}
+                                redirect={this.state.noRedirect} />}
                 />
             </Switch>          
             
@@ -305,6 +320,7 @@ class App extends React.Component {
                                 updateDate={this.updateDate}
                                 updateAsks={this.updateAsks}
                                 addAsks={this.addAsks}
+                                redirect={this.state.askRedirect}
                                 />}
             />
             </Switch>
@@ -326,6 +342,7 @@ class App extends React.Component {
                                   updateDate={this.updateDate}
                                   updateEnjoys={this.updateEnjoys}
                                   addEnjoys={this.addEnjoys}
+                                  redirect={this.state.enjoyRedirect}
                                 />}
                  />
             </Switch>
@@ -346,6 +363,7 @@ class App extends React.Component {
                                   updateDate={this.updateDate}
                                   updateEats={this.updateEats}
                                   addEats={this.addEats}
+                                  redirect={this.state.eatsRedirect}
                                 />}
                 />
               </Switch>
@@ -366,6 +384,7 @@ class App extends React.Component {
                                   updateDate={this.updateDate}
                                   updateExercise={this.updateExercise}
                                   addExercise={this.addExercise}
+                                  redirect={this.state.exerciseRedirect}
                   />}
                 />
                 </Switch>
@@ -384,7 +403,8 @@ class App extends React.Component {
                     render={() => <RestAndRelaxation
                                     updateDate={this.updateDate}
                                     updateRest={this.updateRest}
-                                    addRest={this.addRest}/>}
+                                    addRest={this.addRest}
+                                    redirect={this.state.restRedirect}/>}
                   />
                 </Switch>
                 
@@ -403,7 +423,8 @@ class App extends React.Component {
                                       updateDate={this.updateDate}
                                       updateTime={this.updateTime}
                                       updateDiscipline={this.updateDiscipline}
-                                      addDiscipline={this.addDiscipline}/>}
+                                      addDiscipline={this.addDiscipline}
+                                      redirect={this.state.disciplineRedirect}/>}
                   />
                 </Switch>
                
@@ -421,7 +442,8 @@ class App extends React.Component {
                       render={() => <SelfSoothing
                                       updateDate={this.updateDate}
                                       updateSoothe={this.updateSoothe}
-                                      addSoothe={this.addSoothe}/>}
+                                      addSoothe={this.addSoothe}
+                                      redirect={this.state.sootheRedirect}/>}
                     />
                 </Switch>
                 

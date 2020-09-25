@@ -1,14 +1,25 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Exercise extends React.Component {
-constructor (props) {
-    super(props);
-    this.state = {
-        selectedOption: "yes"
+// constructor (props) {
+//     super(props);
+//     this.
+    state = {
+        selectedOption: "yes", 
+        redirect: this.props.redirect
+    }
+// }
+
+componentDidUpdate(prevProps) {
+    if (prevProps.redirect !== this.props.redirect) {
+        this.setState({redirect : this.props.redirect})
     }
 }
 render () {
+    if (this.props.redirect) {
+        return <Redirect to={this.props.redirect} />
+    }
     return (
         <>
         <form className="card">

@@ -1,8 +1,12 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const SayingNo = ({ updateDate, updateNos, addNos }) => {
+const SayingNo = ({ updateDate, updateNos, addNos, redirect }) => {
+    if (redirect) {
+        return <Redirect to={redirect} />
+    }
     return (
+        
         <>
         <form className="card">
             <h2>Saying No</h2>

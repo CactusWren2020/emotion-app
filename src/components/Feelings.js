@@ -1,13 +1,22 @@
 //a form to collect the records
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class RecordFeelings extends React.Component {
+    state = { redirect: this.props.redirect };
+    componentDidUpdate(prevProps) {
+        if (prevProps.redirect !== this.props.redirect) {
+            this.setState({redirect: this.props.redirect})
+        }
+    }
     render() {
-        return (
-            <>
-                <form className="card">  
+             
+                if (this.state.redirect) {
+                    return <Redirect to={this.state.redirect} />
+                }
+                return (
+                <form className="card" >  
                     <h2>Record Your Feelings</h2>
                     <p>
                         <input type="date" 
@@ -19,7 +28,7 @@ class RecordFeelings extends React.Component {
                     </p>
                     <p>
                         <select name="timeOfDay" onChange={(e) => this.props.updateTime(e.target.selectedIndex)}>
-                            <option value="?" disabled selected>Select One</option>
+                            <option value="?" disabled selected >Select One</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>
@@ -34,12 +43,13 @@ class RecordFeelings extends React.Component {
                         <label htmlFor="feelingsEntry">Record Your Feelings</label>
                     </p>
                     <button type="submit"
-                            onClick={this.props.addRecord}>Submit</button>
+                            onClick={ this.props.addRecord }>Submit</button>
+                     
                     <Link to="/likes-and-dislikes" className="card-link">Next</Link>                
                             </form>
-                   
-            </>
-            );
+                )        
+        
+            
     }
 }
 

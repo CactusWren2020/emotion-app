@@ -5,51 +5,56 @@ import quizData from './quizData';
 
 class Quiz extends React.Component {
     state = {
-        dataQuestion: [],
+        dataQuestion: quizData,
         currentQuestion: 0,
-        answers: {yes: 0, no: 0}
+        answers: 0
     }
     setStateFunction = () => {
         this.setState( {
             dataQuestion: quizData
         })
     }
-    componentDidMount() {
-        this.setStateFunction();
+    updateAnswers = (answer) => {
+        this.setState((prevState) => ({ answers: prevState.answers + answer,
+            currentQuestion: prevState.currentQuestion++ }
+        ));
     }
-
+    reset = () => {
+        console.log("hi")
+        this.setState({ currentQuestion: 0, answers: 0 })
+    }
     render() {
 
         return (
             <>
                 <div className="card">
                  <QuizHeader /> 
+                 {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ? 
+                 <h2>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</h2>
+                 :
+                 
                  <form>
                  {
-                     
-                        <div>
-                            <h2>{quizData[0].question}</h2>
-                        </div>
-                    
-                 }
-                 <div>
-                    <input type="radio"
-                        onChange={(e) => this.props.updateAnswer(e.target.value)} 
+                        <div key={quizData[ this.state.currentQuestion].id}>
                         
-                        name="radioButtons"
-                        value="yes"/>
-                    <label htmlFor="yes">Yes</label>
-                    <input type="radio" 
-                        onChange={(e) => this.props.updateAnswer(e.target.value)}
-                        name="radioButtons"
-                        value="no"
-                        />
-                    <label htmlFor="no">No</label>
-                </div>
-                 <button type="button">Yes</button>
-                 <button type="button">No</button>
-                 <button type="button">Not sure</button>
+                            <h2>{quizData[this.state.currentQuestion].question}</h2>
+                        </div>
+                 }
+                 <button type="button"
+                        value="1"
+                         onClick={(e) => this.updateAnswers(parseInt(e.target.value))}>
+                         Yes
+                         </button>
+                 <button type="button"
+                        value="0"
+                        onClick={(e) => this.updateAnswers(parseInt(e.target.value))}
+                        >No or not sure
+                 </button>
+                 <button type="button"
+                        onClick={this.reset}
+                        >Reset</button>
                  </form>
+                }
                  </div>
             </>
         )

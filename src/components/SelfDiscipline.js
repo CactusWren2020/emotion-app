@@ -1,10 +1,19 @@
 //a form to get records of self-discipline
 
 import React from "react";
-import { Link } from 'react-router-dom'; 
+import { Link, Redirect } from 'react-router-dom'; 
 
 class SelfDiscipline extends React.Component {
+    state = { redirect: null }
+    componentDidUpdate(prevProps) {
+        if (prevProps.redirect !== this.props.redirect) {
+            this.setState({ redirect: this.props.redirect})
+        }
+    }
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect}/>
+        }
         return (
             <>
                 <form className="card">  

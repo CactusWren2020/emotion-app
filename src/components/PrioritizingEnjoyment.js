@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const PrioritizingEnjoyment = ({ updateDate, updateEnjoys, addEnjoys }) => {
+const PrioritizingEnjoyment = ({ updateDate, updateEnjoys, addEnjoys, redirect }) => {
+    if (redirect) {
+        return <Redirect to={redirect}/>
+    }
     return (
         <>
         <form className="card">

@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const Eating = ({ updateDate, updateEats, addEats }) => {
+const Eating = ({ updateDate, updateEats, addEats, redirect }) => {
+    if (redirect) {
+        return <Redirect to={redirect}/>
+    }
     return (
         <>
         <form className="card">

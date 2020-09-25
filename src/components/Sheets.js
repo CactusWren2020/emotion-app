@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowseRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Sheets = () => {
 

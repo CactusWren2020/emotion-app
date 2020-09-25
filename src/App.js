@@ -7,6 +7,9 @@ import Forms from './components/Forms';
 import Sheets from './components/Sheets';
 import Nav from './components/Nav';
 
+import Quiz from './components/quiz/Quiz';
+ 
+
 import HowToUse from './components/HowToUse';
 import About from './components/About';
 
@@ -218,6 +221,7 @@ class App extends React.Component {
               <Route
                 exact path="/how-to-use"
                   render={() => <HowToUse />}/>
+            </Switch>
 
             <Switch>
               <Route  
@@ -225,7 +229,13 @@ class App extends React.Component {
                 render={() => <About />}/>
             </Switch>
 
+            <Switch>
+              <Route 
+                exact path="/quiz"
+                render={() => <Quiz />}/>
             </Switch>
+
+             
             {/* Feelings */}
             <Switch>
             <Route 

@@ -29,28 +29,32 @@ class Quiz extends React.Component {
                 <div className="card">
                 <form>
                     <QuizHeader /> 
-                {/*   {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ?
-                    <h2>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</h2>
+                   {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ?
+                    <p>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</p>
                     :
-                */}
+                   <>
                     <div key={quizData[ this.state.currentQuestion].id}
                         className="divHeight">
-                        <h2>{quizData[this.state.currentQuestion].question}</h2>
-                    </div>
-                    <button type="button"
-                            value="1"
-                            onClick={(e) => this.updateAnswers(parseInt(e.target.value))}>
-                            Yes
-                    </button>
-                    <button type="button"
-                            value="0"
-                            onClick={(e) => this.updateAnswers(parseInt(e.target.value))}
-                            >No or not sure
-                    </button>
-                    <button type="button"
-                            onClick={this.reset}
-                            >Reset
-                    </button>
+                        <p>{quizData[this.state.currentQuestion].question}</p>
+                       
+                        </div>
+                        <button type="button"
+                        value="1"
+                        onClick={(e) => this.updateAnswers(parseInt(e.target.value))}>
+                        Yes
+                </button>
+                <button type="button"
+                        value="0"
+                        onClick={(e) => this.updateAnswers(parseInt(e.target.value))}
+                        >No or not sure
+                </button>
+                <button type="button"
+                        onClick={this.reset}
+                        >Reset
+                </button>
+                    
+                </>   
+                }
                     </form>
                 </div>
             </>

@@ -114,7 +114,10 @@ form {
 .divHeight {
   min-height: 30vh;
 }
+.divHeight p {
+  padding-top: 40px;
 
+}
 button {
   font-size: 18px;
   padding: 9px;

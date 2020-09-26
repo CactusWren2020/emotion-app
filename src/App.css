@@ -108,6 +108,13 @@ p {
   font-size: 18px;
   line-height: 27px;
 }
+form {
+  position: relative;
+}
+.divHeight {
+  min-height: 30vh;
+}
+
 button {
   font-size: 18px;
   padding: 9px;
@@ -115,11 +122,20 @@ button {
   background-color: #495da8;
   color: white;
   box-shadow: 3px 3px #282c34;
+  position: absolute;
+  bottom: 20px;
+  
     /* 
   large button, 44px in height, border-radius 5
   medium button, 54px in height, border-radius 10
   extra large, 64px in height, border-radius 15
    */
+}
+button + button {
+  left: 75px;
+}
+button + button + button {
+  left: 235px;
 }
 button:hover {
   background-color:#3a4984;
@@ -141,5 +157,3 @@ lighter: #6779bd
 black: #282c34
 
 */
-
- 

@@ -24,38 +24,35 @@ class Quiz extends React.Component {
         this.setState({ currentQuestion: 0, answers: 0 })
     }
     render() {
-
         return (
-            <>
+             <>
                 <div className="card">
-                 <QuizHeader /> 
-                 {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ? 
-                 <h2>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</h2>
-                 :
-                 
-                 <form>
-                 {
-                        <div key={quizData[ this.state.currentQuestion].id}>
-                        
-                            <h2>{quizData[this.state.currentQuestion].question}</h2>
-                        </div>
-                 }
-                 <button type="button"
-                        value="1"
-                         onClick={(e) => this.updateAnswers(parseInt(e.target.value))}>
-                         Yes
-                         </button>
-                 <button type="button"
-                        value="0"
-                        onClick={(e) => this.updateAnswers(parseInt(e.target.value))}
-                        >No or not sure
-                 </button>
-                 <button type="button"
-                        onClick={this.reset}
-                        >Reset</button>
-                 </form>
-                }
-                 </div>
+                <form>
+                    <QuizHeader /> 
+                {/*   {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ?
+                    <h2>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</h2>
+                    :
+                */}
+                    <div key={quizData[ this.state.currentQuestion].id}
+                        className="divHeight">
+                        <h2>{quizData[this.state.currentQuestion].question}</h2>
+                    </div>
+                    <button type="button"
+                            value="1"
+                            onClick={(e) => this.updateAnswers(parseInt(e.target.value))}>
+                            Yes
+                    </button>
+                    <button type="button"
+                            value="0"
+                            onClick={(e) => this.updateAnswers(parseInt(e.target.value))}
+                            >No or not sure
+                    </button>
+                    <button type="button"
+                            onClick={this.reset}
+                            >Reset
+                    </button>
+                    </form>
+                </div>
             </>
         )
     }

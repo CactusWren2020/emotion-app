@@ -28,7 +28,7 @@ class RecordFeelings extends React.Component {
                     </p>
                     <p>
                         <select name="timeOfDay" onChange={(e) => this.props.updateTime(e.target.selectedIndex)}>
-                            <option value="?" disabled selected >Select One</option>
+                            <option value="selected" disabled   >Select One</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>

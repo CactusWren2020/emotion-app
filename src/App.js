@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import {BrowserRouter as Router, withRouter, Route, Switch, Link } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Forms from './components/Forms';
 import Sheets from './components/Sheets';

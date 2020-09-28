@@ -16,7 +16,7 @@ class Quiz extends React.Component {
     }
     updateAnswers = (answer) => {
         this.setState((prevState) => ({ answers: prevState.answers + answer,
-            currentQuestion: ++prevState.currentQuestion }
+            currentQuestion: prevState.currentQuestion + 1 }
         ));
     }
     reset = () => {

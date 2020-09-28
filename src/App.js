@@ -2,6 +2,7 @@ import React from 'react';
 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import SimpleStorage from 'react-simple-storage';
 
 import Forms from './components/Forms';
 import Sheets from './components/Sheets';
@@ -214,6 +215,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
+             <SimpleStorage parent={this}/>  
           <header className="App-header">
             
             <Link to="/" className="header-text"><h1 >Emotion App</h1></Link>

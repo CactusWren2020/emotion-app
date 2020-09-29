@@ -1,13 +1,15 @@
 import React from 'react';
 import QuizHeader from './QuizHeader';
-import quizData from './quizData';
- 
+import Dashboard from './Dashboard';
+import { forms, quizData }from './quizData';
+import SimpleStorage from 'react-simple-storage';
 
 class Quiz extends React.Component {
     state = {
         dataQuestion: quizData,
         currentQuestion: 0,
-        answers: 0
+        answers: 0,
+        recForms: []  //store recommend forms as suggested by the responses
     }
     setStateFunction = () => {
         this.setState( {
@@ -15,8 +17,25 @@ class Quiz extends React.Component {
         })
     }
     updateAnswers = (answer) => {
-        this.setState((prevState) => ({ answers: prevState.answers + answer,
-            currentQuestion: prevState.currentQuestion + 1 }
+        let recForm = "";
+        if (answer) { 
+        let temp = quizData[this.state.currentQuestion].form; //form numbers to add to state
+        recForm = temp.filter((item) => {
+         if (this.state.recForms.indexOf(item) === -1) { //only add items that don't already exist in the array
+            return item;
+                } else {
+                    return false;
+                    }
+                }
+            )
+        
+        }
+        console.log(recForm);
+        this.setState((prevState) => ({ 
+            answers: prevState.answers + answer,
+            currentQuestion: prevState.currentQuestion + 1,
+            recForms: [...prevState.recForms, ...recForm] //adds any new items (might be in array) to the old array
+            }
         ));
     }
     reset = () => {
@@ -27,10 +46,18 @@ class Quiz extends React.Component {
         return (
              <>
                 <div className="card">
-                <form>
+                <SimpleStorage parent={this}/>
+                <div>
                     <QuizHeader /> 
                    {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ?
+                    <>
                     <p>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</p>
+                    <Dashboard 
+                        quizData={quizData}
+                        forms={forms}
+                        recForms={this.state.recForms}
+                        />
+                    </>
                     :
                    <>
                     <div key={quizData[ this.state.currentQuestion].id}
@@ -55,7 +82,7 @@ class Quiz extends React.Component {
                     
                 </>   
                 }
-                    </form>
+                    </div>
                 </div>
             </>
         )

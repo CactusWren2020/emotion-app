@@ -38,6 +38,8 @@ import SelfSoothingSheet from "./components/SelfSoothingSheet"
 
 class App extends React.Component {
   state = { 
+      displayForms: [],
+
       currentDate: "",
       currentTime: "",
 
@@ -89,7 +91,9 @@ class App extends React.Component {
   updateTime = (option) => {
     const times = ["", "morning", "afternoon", "evening"];
     this.setState({ currentTime: times[option] })
-}
+  }
+  /* Get Forms to Be Displayed */
+
   /* Rest and Relaxation */
   updateRest = (val) =>{
     this.setState({ currentRests: val })
@@ -457,7 +461,9 @@ class App extends React.Component {
                     />
                 </Switch>
                 </header>
-      
+                <footer>
+                 Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> 
+                </footer>
       </div>
      
     </Router>

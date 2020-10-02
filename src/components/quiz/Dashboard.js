@@ -1,13 +1,10 @@
 import React from 'react';
 
 class Dashboard extends React.Component {
-    handleFormSubmit = (e) => {
-        e.preventDefault();
-        console.log(e);
+    state = { 
+        checked: null,
     }
-    handleCheckboxChange = (e) => {
-        console.log(e);
-    }
+   
     render() {
         return (
         <>
@@ -20,7 +17,8 @@ class Dashboard extends React.Component {
                 }
             )}
         <p>Check off the forms you'd like to use. Each one deals with a type of personal growth. You can change this whenever you like.</p>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={ this.props.handleRecedForms}
+            className="dashboard">
          
         {/* sends checkboxes "up" to App  */}
         {this.props.forms.map((list, index) => {
@@ -30,7 +28,8 @@ class Dashboard extends React.Component {
                     type="checkbox"
                     key={`F${index}`} 
                     value={this.props.forms[index]}
-                    onChange={(e) => this.handleCheckboxChange(e.target.value)}
+                    onChange={(e) => this.props.handleCheckboxChange(e)}
+                    checked={(this.props.checkedForms.indexOf(this.props.forms[index]) !== -1)}
                     />
                       
                 <label 
@@ -44,7 +43,7 @@ class Dashboard extends React.Component {
                 </div>
                 )
             })}
-            <button type="submit">Save Forms</button>
+             
             </form>
         </>
         )

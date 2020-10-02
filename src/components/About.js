@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const About = () => {
+const About = ({ checkedForms }) => {
     return (
         <div className="about">
             
@@ -19,8 +19,11 @@ const About = () => {
                     </p>
                     <Link to="/how-to-use" className="card-link">Next</Link>
                     <p>or</p>
-                    <Link to="/quiz" className="card-link">Take a quiz to see if you have Childhood Emotional Neglect</Link> 
-
+                    {(checkedForms.length === 0) ?                         
+                        <Link to="/quiz" className="card-link">Take a quiz to see if you have Childhood Emotional Neglect</Link> 
+                    :
+                    <Link to="/quiz" className="card-link">Dashboard</Link>
+                    }        
                 </div>
           
         </div>

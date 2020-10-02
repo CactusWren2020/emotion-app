@@ -20,15 +20,12 @@ class Quiz extends React.Component {
         let recForm = "";
         if (answer) { 
         let temp = quizData[this.state.currentQuestion].form; //form numbers to add to state
+        console.log(temp)
+        
         recForm = temp.filter((item) => {
-         if (this.state.recForms.indexOf(item) === -1) { //only add items that don't already exist in the array
-            return item;
-                } else {
-                    return false;
-                    }
+         return (this.state.recForms.indexOf(item) === -1 ) //only add items that don't already exist in the array
                 }
             )
-        
         }
         console.log(recForm);
         this.setState((prevState) => ({ 
@@ -40,22 +37,34 @@ class Quiz extends React.Component {
     }
     reset = () => {
         console.log("hi")
-        this.setState({ currentQuestion: 0, answers: 0 })
+        this.setState({ currentQuestion: 0, answers: 0, recForms: [] })
     }
     render() {
         return (
              <>
                 <div className="card">
-                <SimpleStorage parent={this}/>
+         <SimpleStorage parent={this}
+                        blacklist={
+                            [
+                                this.state.dataQuestion,
+                                this.state.answers
+                            ]
+                        }
+                                />   
                 <div>
                     <QuizHeader /> 
-                   {this.state.currentQuestion === (this.state.dataQuestion.length - 1) ?
+                   {
+                    this.state.currentQuestion === (this.state.dataQuestion.length - 1)
+                     ?
                     <>
                     <p>You answered yes to {this.state.answers} out of {this.state.dataQuestion.length - 1} questions</p>
                     <Dashboard 
                         quizData={quizData}
                         forms={forms}
                         recForms={this.state.recForms}
+                        checkedForms={this.props.checkedForms}
+                        handleRecedForms={this.props.handleRecedForms}
+                        handleCheckboxChange={this.props.handleCheckboxChange}
                         />
                     </>
                     :

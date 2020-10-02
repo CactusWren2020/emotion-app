@@ -38,7 +38,8 @@ import SelfSoothingSheet from "./components/SelfSoothingSheet"
 
 class App extends React.Component {
   state = { 
-      displayForms: [],
+      // displayForms: [],
+      checkedForms: [ ],
 
       currentDate: "",
       currentTime: "",
@@ -93,7 +94,28 @@ class App extends React.Component {
     this.setState({ currentTime: times[option] })
   }
   /* Get Forms to Be Displayed */
-
+   
+  handleCheckboxChange = (e) => {
+    if (e.target.checked) {
+      console.log("hi")
+        const newCheckedForms = [...this.state.checkedForms, e.target.value];
+        this.setState((prevState) => (
+            { checkedForms: newCheckedForms }
+        ));
+    }
+    if (!e.target.checked) {
+        const newCheckedForms = this.state.checkedForms;
+        const removedCheckbox = newCheckedForms.indexOf(e.target.checked);
+        newCheckedForms.splice(removedCheckbox, 1);
+        this.setState({ checkedForms : newCheckedForms });
+    }
+} 
+//   handleRecedForms = (e) => {
+//     e.preventDefault();
+//     this.setState(() => ({
+//       displayForms : this.state.checkedForms
+//     }));
+// }
   /* Rest and Relaxation */
   updateRest = (val) =>{
     this.setState({ currentRests: val })
@@ -219,7 +241,23 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-             <SimpleStorage parent={this}/>  
+       <SimpleStorage parent={this}
+                       blacklist={
+                         [
+                          this.state.currentDate,
+                          this.state.currentTime,
+                          this.state.currentRecord,
+                          this.state.currentLikeOrDislike,
+                          this.state.currentText,
+                          this.state.currentNos,
+                          this.state.currentAsks,
+                          this.state.currentEnjoys,
+                          this.state.currentEats,
+                          this.state.currentExercises,
+                          this.state.currentRests,
+                          this.state.currentDiscipline,
+                          this.state.currentSoothe
+                         ]}/>  
           <header className="App-header">
             
             <Link to="/" className="header-text"><h1 >Emotion App</h1></Link>
@@ -227,13 +265,15 @@ class App extends React.Component {
              <Switch>
             <Route 
               exact path="/forms"
-              render={() => <Forms />}/>
+              render={() => <Forms 
+                checkedForms={this.state.checkedForms}
+                />}/>
             </Switch>
 
             <Switch>
             <Route 
               exact path="/sheets"
-              render={() => <Sheets />}/>
+              render={() => <Sheets/>}/>
             </Switch>
 
             <Switch>
@@ -245,13 +285,17 @@ class App extends React.Component {
             <Switch>
               <Route  
                 exact path="/about"
-                render={() => <About />}/>
+                render={() => <About 
+                                checkedForms={this.state.checkedForms}/>}/>
             </Switch>
 
             <Switch>
               <Route 
                 exact path="/quiz"
-                render={() => <Quiz />}/>
+                render={() => <Quiz
+                checkedForms={this.state.checkedForms}
+                  handleRecedForms={this.handleRecedForms}
+                handleCheckboxChange={this.handleCheckboxChange} />}/>
             </Switch>
 
              
@@ -277,6 +321,8 @@ class App extends React.Component {
           </Switch>
         
           {/* Likes and Dislikes */}
+         
+          
           <Switch>
             <Route
               exact path="/likes-and-dislikes"
@@ -289,6 +335,7 @@ class App extends React.Component {
               />} 
             />    
           </Switch>
+         
           
           <Switch>
             <Route

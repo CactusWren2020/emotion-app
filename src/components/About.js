@@ -17,7 +17,7 @@ const About = ({ checkedForms }) => {
                     <p>
                         However, the condition can be treated. The basic method is to undergo a series of exercises and changes over time. These activities are designed to improve your emotional awareness and treat other common issues associated with Childhood Emotional Neglect.  
                     </p>
-                    <Link to="/how-to-use" className="card-link">Next</Link>
+                    <Link to="/how-to-use" className="card-link">More information</Link>
                     <p>or</p>
                     {(checkedForms.length === 0) ?                         
                         <Link to="/quiz" className="card-link">Take a quiz to see if you have Childhood Emotional Neglect</Link> 

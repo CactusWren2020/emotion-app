@@ -4,6 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SimpleStorage from 'react-simple-storage';
 
+import { Welcome } from './components/Welcome';
+
 import Forms from './components/Forms';
 import Sheets from './components/Sheets';
 import Nav from './components/Nav';
@@ -38,6 +40,7 @@ import SelfSoothingSheet from "./components/SelfSoothingSheet"
 
 class App extends React.Component {
   state = { 
+
       // displayForms: [],
       checkedForms: [ ],
 
@@ -259,6 +262,7 @@ class App extends React.Component {
                           this.state.currentSoothe
                          ]}/>  
           <header className="App-header">
+         
             
             <Link to="/" className="header-text"><h1 >Emotion App</h1></Link>
             <Nav />
@@ -273,7 +277,8 @@ class App extends React.Component {
             <Switch>
             <Route 
               exact path="/sheets"
-              render={() => <Sheets/>}/>
+              render={() => <Sheets
+                            checkedForms={this.state.checkedForms}/>}/>
             </Switch>
 
             <Switch>
@@ -287,6 +292,13 @@ class App extends React.Component {
                 exact path="/about"
                 render={() => <About 
                                 checkedForms={this.state.checkedForms}/>}/>
+            </Switch>
+
+            <Switch>
+            <Route
+                  exact path="/"
+                  render={() => <Welcome />}
+            />
             </Switch>
 
             <Switch>
@@ -507,10 +519,18 @@ class App extends React.Component {
                                         soothes={this.state.soothes}/>}
                     />
                 </Switch>
-                </header>
+
                 <footer>
-                 Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> 
+                <p>
+                    Emotion App &#169;2020 <a href="https://mikecho.dev">Mike Cho</a> 
+                  &nbsp;
+                  ||
+                  Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                 </p> 
                 </footer>
+
+                </header>
+                
       </div>
      
     </Router>

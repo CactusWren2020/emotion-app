@@ -8,6 +8,7 @@ const ExerciseSheet = ({ exercise }) => {
         <>
             <div className="card">
                 <h2>Days You Exercised</h2>
+                    {exercise.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {exercise.map(item => (
                             <li key={item.date + "exercise"}

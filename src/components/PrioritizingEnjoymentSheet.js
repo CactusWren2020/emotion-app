@@ -8,6 +8,7 @@ const PrioritizingEnjoymentSheet = ({ enjoys }) => {
         <>
             <div className="card">
                 <h2>Times you prioritized enjoyment</h2>
+                {enjoys.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {enjoys.map(item => (
                             <li key={item.date + "enjoys"}

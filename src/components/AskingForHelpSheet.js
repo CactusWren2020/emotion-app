@@ -8,6 +8,7 @@ const AskingForHelpSheet = ({ asks }) => {
         <>
             <div className="card">
                 <h2>How Many Times You Asked for Help</h2>
+                    {asks.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {asks.map(item => (
                             <li key={item.date + "ask"}

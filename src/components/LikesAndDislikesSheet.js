@@ -6,9 +6,12 @@ const LikesAndDislikes = ({ likesAndDislikes }) => {
         <>
             <div className="card">
                 <h2>Your likes and dislikes</h2>
+                {likesAndDislikes.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {likesAndDislikes.map( item => {
-                            return <li key={item.index}>{item.date}, {item.likeOrDislike}, {item.text}</li>
+                            return <li key={item.index}>{item.date},
+                             {item.likeOrDislike}, 
+                             {item.text}</li>
                         })}    
                     </ul>
             <Link to="/saying-no-sheet" className="card-link">Next</Link>

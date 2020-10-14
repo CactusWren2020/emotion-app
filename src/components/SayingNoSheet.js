@@ -8,6 +8,7 @@ const SayingNoSheet = ({ nos }) => {
         <>
             <div className="card">
             <h2>How many times you said no today</h2>
+            {nos.length === 0 && <p><i>no records yet</i></p>}
             <ul>
                 {nos.map(item => (
                     <li key={item.date + "no"}

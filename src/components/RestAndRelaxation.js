@@ -32,18 +32,20 @@ class RestAndRelaxation extends React.Component {
                     </p>
                  
                 <div>
-                    <input type="radio"
-                           onChange={(e) => this.props.updateRest(e.target.value)} 
-                           
-                          name="radioButtons"
-                          value="yes"/>
+                    <p>
+                        <input type="radio"
+                            onChange={(e) => this.props.updateRest(e.target.value)} 
+                            
+                            name="radioButtons"
+                            value="yes"/>
                     <label htmlFor="yes">Yes</label>
-                    <input type="radio" 
-                           onChange={(e) => this.props.updateRest(e.target.value)}
-                           name="radioButtons"
-                           value="no"
-                           />
-                    <label htmlFor="no">No</label>
+                        <input type="radio" 
+                            onChange={(e) => this.props.updateRest(e.target.value)}
+                            name="radioButtons"
+                            value="no"
+                            />
+                        <label htmlFor="no">No</label>
+                    </p>
                 </div>
     
                                  <button type="submit"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HowToUse = () => {
+const HowToUse = ({ checkedForms }) => {
     return (
         <div className="about">
             
@@ -22,7 +22,11 @@ const HowToUse = () => {
                      <p>
                         If you want to improve, you need to put in the work. Commit to using Emotion App every day for a month. If you see positive changes, then commit to a year. Who knows how far you can go when you commit to taking care of yourself?
                      </p>
-                     <Link to="/feelings" className="card-link">Get Started with Your First Form</Link>
+                     {checkedForms.length === 0 ? 
+                        <Link to="./quiz" className="card-link">Take the Quiz</Link> 
+                        :
+                        <Link to="/feelings" className="card-link">Get Started with Your First Form</Link>
+                     }
                 </div>
            
         </div>

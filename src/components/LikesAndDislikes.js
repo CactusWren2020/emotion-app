@@ -18,6 +18,7 @@ const LikesAndDislikes = ({ updateDate, updateLikeOrDislike, updateText, addLike
                 </p>
                 <p>
                     <select name="likeOrDislike"
+                            required
                             onChange={(e) => updateLikeOrDislike(e.target.selectedIndex)}>
                         <option disabled value="selected">Like or dislike</option>
                         <option value="like">Like</option>

@@ -8,6 +8,7 @@ const FeelingsSheet = ({ records }) => {
         <>
             <div className="card">
                 <h2>Feelings record</h2>
+                    {records.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {records.map(record => (
                             <li key={record.date + record.time}>

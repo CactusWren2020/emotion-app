@@ -42,7 +42,7 @@ class App extends React.Component {
   state = { 
 
       // displayForms: [],
-      checkedForms: [ ],
+      checkedForms: [],
 
       currentDate: "",
       currentTime: "",
@@ -113,12 +113,12 @@ class App extends React.Component {
         this.setState({ checkedForms : newCheckedForms });
     }
 } 
-//   handleRecedForms = (e) => {
-//     e.preventDefault();
-//     this.setState(() => ({
-//       displayForms : this.state.checkedForms
-//     }));
-// }
+  handleRecedForms = (e) => {
+    e.preventDefault();
+    this.setState(() => ({
+      displayForms : this.state.checkedForms
+    }));
+}
   /* Rest and Relaxation */
   updateRest = (val) =>{
     this.setState({ currentRests: val })
@@ -261,7 +261,7 @@ class App extends React.Component {
                           this.state.currentDiscipline,
                           this.state.currentSoothe
                          ]}/>  
-          <header className="App-header">
+           <header className="App-header">
          
             
             <Link to="/" className="header-text"><h1 >Emotion App</h1></Link>
@@ -284,7 +284,8 @@ class App extends React.Component {
             <Switch>
               <Route
                 exact path="/how-to-use"
-                  render={() => <HowToUse />}/>
+                  render={() => <HowToUse
+                                    checkedForms={this.state.checkedForms} />}/>
             </Switch>
 
             <Switch>
@@ -519,7 +520,9 @@ class App extends React.Component {
                                         soothes={this.state.soothes}/>}
                     />
                 </Switch>
-
+              
+                </header>
+              
                 <footer>
                 <p>
                     Emotion App &#169;2020 <a href="https://mikecho.dev">Mike Cho</a> 
@@ -529,8 +532,7 @@ class App extends React.Component {
                  </p> 
                 </footer>
 
-                </header>
-                
+             
       </div>
      
     </Router>

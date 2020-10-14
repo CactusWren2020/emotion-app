@@ -8,6 +8,7 @@ const EatingSheet = ({ eats }) => {
         <>
         <div className="card">
             <h2>How Many Times You Overrode Unhealthy Eating Habit</h2>
+            {eats.length === 0 && <p><i>no records yet</i></p>}
             <ul>
                 {eats.map(item => (
                     <li key={item.date + "eats"}

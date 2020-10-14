@@ -8,6 +8,7 @@ const SelfDisciplineSheet = ({ disciplines }) => {
         <>
             <div className="card">
                 <h2>Self-Discipline Record</h2>
+                {disciplines.length === 0 && <p><i>no records yet</i></p>}
                     <ul>
                         {disciplines.map(record => (
                             <li key={record.date + record.time}>

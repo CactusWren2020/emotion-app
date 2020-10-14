@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Dashboard = ({ checkedForms, forms, handleCheckboxChange, handleRecedForms, quizData, recForms }) =>  {
      
-    const [checked, setChecked] = useState(null);
+    // const [checked, setChecked] = useState(null);
 
     return (
         <>

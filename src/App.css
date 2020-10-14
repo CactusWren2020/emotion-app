@@ -187,8 +187,9 @@ black: #282c34
 
 footer {
   background-color: #282c34;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
+  padding: 10px;
 }
 
 footer a, p {
@@ -210,10 +211,7 @@ footer a, p {
     border: 0;
     padding: 0;
   }
-  footer {
-    position: fixed;
-    padding: 10px;
-  }
+  
   footer a, p {
      line-height: 27px;
   }
